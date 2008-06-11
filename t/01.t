@@ -24,7 +24,23 @@ for my $string (@strings){
    
 }
 
+print STDERR "\n\nAND\n\n";
 
 
-print STDERR " - $0 ended\n" if DEBUG;
+my %and = (
+   'John and Laura' => 'John And Laura',
+   'John & Laura' => 'John And Laura',
+   'John&Laura' => 'John And Laura',
+   'John &Laura' => 'John And Laura',
+   'John &' => 'John And',
+   '234&23 Home Prices' => '234 23 Home Prices',
+   'H&R Sipps' => 'HR Sipps',
+);
 
+while( my($ugly, $pretty) = each %and){
+  my $got = prettify($ugly); 
+
+  ok($got eq $pretty) or
+     print STDERR "ugly:$ugly\npretty should be:$pretty\npretty got:$got\n\n";
+
+}
