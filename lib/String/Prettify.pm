@@ -4,7 +4,8 @@ use vars qw($VERSION @EXPORT @ISA);
 @ISA=qw/Exporter/;
 @EXPORT = qw(prettify prettify_filename);
 use strict;
-$VERSION = sprintf "%d.%02d", q$Revision: 1.3 $ =~ /(\d+)/g;
+use Carp;
+$VERSION = sprintf "%d.%02d", q$Revision: 1.4 $ =~ /(\d+)/g;
 
 sub prettify {
    my $string = shift;
